@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Customer.aspx.cs" Inherits="connectDatabase.AnotherWebForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Customer.aspx.cs" Inherits="connectDatabase.Customer" %>
 
 <!DOCTYPE html>
 
@@ -61,9 +61,9 @@
                             <ul class="nav nav-sidebar">
                                  <li><a href="Staff.aspx">Staff</a></li>
                                 <li class="active"><a href="#">Customers</a></li>
-                                <li><a href="#">Designation</a></li>
-                                <li><a href="#">Packages</a></li>
-                                <li><a href="#">Tour Guides</a></li>
+                                <li><a href="Designation.aspx">Designation</a></li>
+                                <li><a href="Package.aspx">Packages</a></li>
+                                <li><a href="Tour_Guide.aspx">Tour Guides</a></li>
                             </ul>
                          
                         </div>
@@ -125,7 +125,7 @@
                             </div>
 
 
-                            <h1 class="page-header">Another Table Details</h1>
+                            <h1 class="page-header">Customer Table Details</h1>
                             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>

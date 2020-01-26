@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Staff.aspx.cs" Inherits="connectDatabase.AnotherWebForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Staff.aspx.cs" Inherits="connectDatabase.Staff" %>
 
 <!DOCTYPE html>
 
@@ -61,9 +61,9 @@
                             <ul class="nav nav-sidebar">
                                 <li class="active"><a href="#">Staff</a></li>
                                 <li><a href="Customer.aspx">Customers</a></li>
-                                <li><a href="#">Designation</a></li>
-                                <li><a href="#">Packages</a></li>
-                                <li><a href="#">Tour Guides</a></li>
+                                <li><a href="Designation.aspx">Designation</a></li>
+                                <li><a href="Package.aspx">Packages</a></li>
+                                <li><a href="Tour_Guide.aspx">Tour Guides</a></li>
                             </ul>
                            
                         </div>

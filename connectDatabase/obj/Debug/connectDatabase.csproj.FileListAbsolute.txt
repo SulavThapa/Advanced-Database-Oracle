@@ -65,3 +65,4 @@ E:\Locker\college\C# with database\connectDatabase\connectDatabase\bin\System.We
 E:\Locker\college\C# with database\connectDatabase\connectDatabase\bin\System.Web.WebPages.xml
 E:\Locker\college\C# with database\connectDatabase\connectDatabase\bin\System.Web.WebPages.Deployment.xml
 E:\Locker\college\C# with database\connectDatabase\connectDatabase\bin\System.Web.WebPages.Razor.xml
+E:\Locker\college\C# with database\connectDatabase\connectDatabase\obj\Debug\connectDatabase.csprojAssemblyReference.cache
