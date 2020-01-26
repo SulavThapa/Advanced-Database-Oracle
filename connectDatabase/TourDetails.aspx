@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Staff.aspx.cs" Inherits="connectDatabase.Staff" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TourDetails.aspx.cs" Inherits="connectDatabase.TourDetails" %>
 
 <!DOCTYPE html>
 
@@ -59,7 +59,7 @@
                     <div class="row">
                         <div class="col-sm-3 col-md-2 sidebar">
                             <ul class="nav nav-sidebar">
-                                <li class="active"><a href="#">Staff</a></li>
+                                <li><a href="Staff.aspx">Staff</a></li>
                                 <li><a href="Customer.aspx">Customers</a></li>
                                 <li><a href="Designation.aspx">Designation</a></li>
                                 <li><a href="Package.aspx">Packages</a></li>
@@ -67,7 +67,7 @@
                             </ul>
                            
                             <ul class="nav nav-sidebar">
-                                <li><a href="TourDetails.aspx">Tour Details</a></li>
+                                <li class="active"><a href="#">Tour Details</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

@@ -66,6 +66,9 @@
                                 <li class="active"><a href="#">Tour Guides</a></li>
                             </ul>
                          
+                            <ul class="nav nav-sidebar">
+                                <li><a href="TourDetails.aspx">Tour Details</a></li>
+                            </ul>
                         </div>
                         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                             <button class=" btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">

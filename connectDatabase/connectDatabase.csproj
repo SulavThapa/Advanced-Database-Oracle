@@ -209,6 +209,7 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="StyleSheet1.css" />
+    <Content Include="TourDetails.aspx" />
     <Content Include="Tour_Guide.aspx" />
     <Content Include="TutorialWork.aspx" />
     <Content Include="Web.config" />
@@ -236,6 +237,13 @@
       <DependentUpon>Staff.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TourDetails.aspx.cs">
+      <DependentUpon>TourDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TourDetails.aspx.designer.cs">
+      <DependentUpon>TourDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Tour_Guide.aspx.cs">
       <DependentUpon>Tour_Guide.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
