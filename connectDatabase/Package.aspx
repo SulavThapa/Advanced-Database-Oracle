@@ -77,65 +77,74 @@
                             <hr />
                             <div class="collapse" id="collapseExample">
                                 <div class="card card-body">
-                                    <form>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputEmail4">Email</label>
-                                                <input type="email" class="form-control" id="inputEmail4">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputPassword4">Password</label>
-                                                <input type="password" class="form-control" id="inputPassword4">
-                                            </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputEmail4">
+                                            Email</label>
+                                            <input id="inputEmail4" class="form-control" type="email"> </input></div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputPassword4">
+                                            Password</label>
+                                            <input id="inputPassword4" class="form-control" type="password"> </input></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputAddress">
+                                        Address</label>
+                                        <input id="inputAddress" class="form-control" placeholder="1234 Main St" type="text"> </input></div>
+                                    <div class="form-group">
+                                        <label for="inputAddress2">
+                                        Address 2</label>
+                                        <input id="inputAddress2" class="form-control" placeholder="Apartment, studio, or floor" type="text"> </input></div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputCity">
+                                            City</label>
+                                            <input id="inputCity" class="form-control" type="text"> </input></div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputState">
+                                            State</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected="">Choose...</option>
+                                                <option>...</option>
+                                            </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="inputAddress">Address</label>
-                                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputAddress2">Address 2</label>
-                                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputCity">City</label>
-                                                <input type="text" class="form-control" id="inputCity">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="inputState">State</label>
-                                                <select id="inputState" class="form-control">
-                                                    <option selected>Choose...</option>
-                                                    <option>...</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-2">
-                                                <label for="inputZip">Zip</label>
-                                                <input type="text" class="form-control" id="inputZip">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                                <label class="form-check-label" for="gridCheck">
-                                                    Check me out
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Sign in</button>
-                                    </form>
+                                        <div class="form-group col-md-2">
+                                            <label for="inputZip">
+                                            Zip</label>
+                                            <input id="inputZip" class="form-control" type="text"> </input></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input id="gridCheck" class="form-check-input" type="checkbox">
+                                            <label class="form-check-label" for="gridCheck">
+                                            Check me out
+                                            </label>
+                                            </input></div>
+                                    </div>
+                                    <button class="btn btn-primary" type="submit">
+                                        Sign in
+                                    </button>
                                     <hr />
                                 </div>
                             </div>
 
 
                             <h1 class="page-header">Package Table Details</h1>
-                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%">
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="PACKAGE_ID">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
-                                    <asp:BoundField DataField="FIRST_NAME" HeaderText="FIRST_NAME" SortExpression="FIRST_NAME" />
-                                    <asp:BoundField DataField="LAST_NAME" HeaderText="LAST_NAME" SortExpression="LAST_NAME" />
-                                    <asp:BoundField DataField="JOB_ID" HeaderText="JOB_ID" SortExpression="JOB_ID" />
-                                    <asp:BoundField DataField="JOB_TITLE" HeaderText="JOB_TITLE" SortExpression="JOB_TITLE" />
+                                    <asp:BoundField DataField="PACKAGE_ID" HeaderText="PACKAGE_ID" SortExpression="PACKAGE_ID" ReadOnly="True" />
+                                    <asp:BoundField DataField="PACKAGE_NAME" HeaderText="PACKAGE_NAME" SortExpression="PACKAGE_NAME" />
+                                    <asp:BoundField DataField="DIFFICULTY" HeaderText="DIFFICULTY" SortExpression="DIFFICULTY" />
+                                    <asp:BoundField DataField="START_DATE" HeaderText="START_DATE" SortExpression="START_DATE" />
+                                    <asp:BoundField DataField="END_DATE" HeaderText="END_DATE" SortExpression="END_DATE" />
+                                    <asp:BoundField DataField="DAY" HeaderText="DAY" SortExpression="DAY" />
+                                     <asp:TemplateField ItemStyle-Height="50px">
+                                        <ItemTemplate>
+                                            <asp:Button class="btn btn-success" HeaedrText="Edit" Text="Edit" runat="server" />
+                                            <asp:Button class="btn btn-danger" HeaedrText="Delete" Text="Delete" runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                 </Columns>
                                 <EditRowStyle BackColor="#7C6F57" />
                                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -150,10 +159,7 @@
                             </asp:GridView>
             </asp:Panel>
         </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=hr;Password=123;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="Select first_name, last_name, e.job_id, j.job_title
-From employees e
-JOIN jobs j
-ON e.job_id = j.job_id"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=sulav;Password=sulav;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="SELECT * FROM &quot;PACKAGE&quot;"></asp:SqlDataSource>
     </form>
 
     </div>
