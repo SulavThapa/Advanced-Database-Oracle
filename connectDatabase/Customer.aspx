@@ -79,50 +79,20 @@
                                 <div class="card card-body">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="inputEmail4">
-                                            Email</label>
-                                            <input id="inputEmail4" class="form-control" type="email"> </input></div>
+                                            <label for="imputName">
+                                            Name</label>
+                                            <input id="inputName" class="form-control" type="text" placeholder="Ram Khadka"> </input></div>
                                         <div class="form-group col-md-6">
-                                            <label for="inputPassword4">
-                                            Password</label>
-                                            <input id="inputPassword4" class="form-control" type="password"> </input></div>
+                                            <label for="inputPhone">
+                                            Phone</label>
+                                            <input id="inputPhone" class="form-control" type="text" placeholder="123456789"> </input></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputAddress">
                                         Address</label>
-                                        <input id="inputAddress" class="form-control" placeholder="1234 Main St" type="text"> </input></div>
-                                    <div class="form-group">
-                                        <label for="inputAddress2">
-                                        Address 2</label>
-                                        <input id="inputAddress2" class="form-control" placeholder="Apartment, studio, or floor" type="text"> </input></div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputCity">
-                                            City</label>
-                                            <input id="inputCity" class="form-control" type="text"> </input></div>
-                                        <div class="form-group col-md-4">
-                                            <label for="inputState">
-                                            State</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected="">Choose...</option>
-                                                <option>...</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label for="inputZip">
-                                            Zip</label>
-                                            <input id="inputZip" class="form-control" type="text"> </input></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <input id="gridCheck" class="form-check-input" type="checkbox">
-                                            <label class="form-check-label" for="gridCheck">
-                                            Check me out
-                                            </label>
-                                            </input></div>
-                                    </div>
+                                        <input id="inputAddress" class="form-control" placeholder="Bhaktapur" type="text"> </input></div>
                                     <button class="btn btn-primary" type="submit">
-                                        Sign in
+                                        Submit
                                     </button>
                                     <hr />
                                 </div>

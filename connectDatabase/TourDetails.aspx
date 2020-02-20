@@ -71,65 +71,22 @@
                             </ul>
                         </div>
                         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                            <button class=" btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                Add Details
-                            </button>
-                             <hr />
-                            <div class="collapse" id="collapseExample">
-                                <div class="card card-body">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputEmail4">
-                                            Email</label>
-                                            <input id="inputEmail4" class="form-control" type="email"> </input></div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputPassword4">
-                                            Password</label>
-                                            <input id="inputPassword4" class="form-control" type="password"> </input></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputAddress">
-                                        Address</label>
-                                        <input id="inputAddress" class="form-control" placeholder="1234 Main St" type="text"> </input></div>
-                                    <div class="form-group">
-                                        <label for="inputAddress2">
-                                        Address 2</label>
-                                        <input id="inputAddress2" class="form-control" placeholder="Apartment, studio, or floor" type="text"> </input></div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputCity">
-                                            City</label>
-                                            <input id="inputCity" class="form-control" type="text"> </input></div>
-                                        <div class="form-group col-md-4">
-                                            <label for="inputState">
-                                            State</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected="">Choose...</option>
-                                                <option>...</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label for="inputZip">
-                                            Zip</label>
-                                            <input id="inputZip" class="form-control" type="text"> </input></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <input id="gridCheck" class="form-check-input" type="checkbox">
-                                            <label class="form-check-label" for="gridCheck">
-                                            Check me out
-                                            </label>
-                                            </input></div>
-                                    </div>
-                                    <button class="btn btn-primary" type="submit">
-                                        Sign in
-                                    </button>
-                                    <hr />
-                                </div>
+                            <div class="dropdown">
+                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Dropdown
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#">Action</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Another action</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Something else here</a></li>
+                              </ul>
                             </div>
+                            <hr />
 
-
-                            <h1 class="page-header">Package Details</h1>
+                            <h1 class="page-header">Tour Details</h1>
                             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="DETAIL_ID,PACKAGE_ID">
                                 <RowStyle cssClass="RowStyle" />
                                 <AlternatingRowStyle cssClass="AlternateRowStyle" BackColor="White" />
