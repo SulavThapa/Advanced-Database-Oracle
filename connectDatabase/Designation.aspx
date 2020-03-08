@@ -130,17 +130,13 @@
 
 
                             <h1 class="page-header">Designation Table Details</h1>
-                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="ROLE_ID">
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="ROLE_ID" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
+                                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                                     <asp:BoundField DataField="ROLE_ID" HeaderText="ROLE_ID" SortExpression="ROLE_ID" ReadOnly="True" />
                                     <asp:BoundField DataField="ROLE_NAME" HeaderText="ROLE_NAME" SortExpression="ROLE_NAME" />
-                                     <asp:TemplateField ItemStyle-Height="50px">
-                                        <ItemTemplate>
-                                            <asp:Button class="btn btn-success" HeaedrText="Edit" Text="Edit" runat="server" />
-                                            <asp:Button class="btn btn-danger" HeaedrText="Delete" Text="Delete" runat="server" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
+                                    
                                 </Columns>
                                 <EditRowStyle BackColor="#7C6F57" />
                                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -155,7 +151,21 @@
                             </asp:GridView>
             </asp:Panel>
         </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=sulav;Password=sulav;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="SELECT * FROM &quot;ROLE&quot;"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=sulav;Password=sulav;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="SELECT * FROM &quot;ROLE&quot;" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM &quot;ROLE&quot; WHERE &quot;ROLE_ID&quot; = :original_ROLE_ID AND &quot;ROLE_NAME&quot; = :original_ROLE_NAME" InsertCommand="INSERT INTO &quot;ROLE&quot; (&quot;ROLE_ID&quot;, &quot;ROLE_NAME&quot;) VALUES (:ROLE_ID, :ROLE_NAME)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE &quot;ROLE&quot; SET &quot;ROLE_NAME&quot; = :ROLE_NAME WHERE &quot;ROLE_ID&quot; = :original_ROLE_ID AND &quot;ROLE_NAME&quot; = :original_ROLE_NAME">
+            <DeleteParameters>
+                <asp:Parameter Name="original_ROLE_ID" Type="Decimal" />
+                <asp:Parameter Name="original_ROLE_NAME" Type="String" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="ROLE_ID" Type="Decimal" />
+                <asp:Parameter Name="ROLE_NAME" Type="String" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="ROLE_NAME" Type="String" />
+                <asp:Parameter Name="original_ROLE_ID" Type="Decimal" />
+                <asp:Parameter Name="original_ROLE_NAME" Type="String" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
     </form>
 
     </div>

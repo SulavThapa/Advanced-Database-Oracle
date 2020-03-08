@@ -100,19 +100,15 @@
 
 
                             <h1 class="page-header">Customer Table Details</h1>
-                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="CUSTOMER_ID">
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="CUSTOMER_ID" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
+                                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                                     <asp:BoundField DataField="CUSTOMER_ID" HeaderText="CUSTOMER_ID" SortExpression="CUSTOMER_ID" ReadOnly="True" />
                                     <asp:BoundField DataField="CUSTOMER_NAME" HeaderText="CUSTOMER_NAME" SortExpression="CUSTOMER_NAME" />
                                     <asp:BoundField DataField="CUSTOMER_ADDRESS" HeaderText="CUSTOMER_ADDRESS" SortExpression="CUSTOMER_ADDRESS" />
                                     <asp:BoundField DataField="CUSTOMER_PHONE" HeaderText="CUSTOMER_PHONE" SortExpression="CUSTOMER_PHONE" />
-                                     <asp:TemplateField ItemStyle-Height="50px">
-                                        <ItemTemplate>
-                                            <asp:Button class="btn btn-success" HeaedrText="Edit" Text="Edit" runat="server" />
-                                            <asp:Button class="btn btn-danger" HeaedrText="Delete" Text="Delete" runat="server" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
+                                    
                                 </Columns>
                                 <EditRowStyle BackColor="#7C6F57" />
                                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -127,7 +123,29 @@
                             </asp:GridView>
             </asp:Panel>
         </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=sulav;Password=sulav;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="SELECT * FROM &quot;CUSTOMER&quot;"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=sulav;Password=sulav;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="SELECT * FROM &quot;CUSTOMER&quot;" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM &quot;CUSTOMER&quot; WHERE &quot;CUSTOMER_ID&quot; = :original_CUSTOMER_ID AND &quot;CUSTOMER_NAME&quot; = :original_CUSTOMER_NAME AND &quot;CUSTOMER_ADDRESS&quot; = :original_CUSTOMER_ADDRESS AND &quot;CUSTOMER_PHONE&quot; = :original_CUSTOMER_PHONE" InsertCommand="INSERT INTO &quot;CUSTOMER&quot; (&quot;CUSTOMER_ID&quot;, &quot;CUSTOMER_NAME&quot;, &quot;CUSTOMER_ADDRESS&quot;, &quot;CUSTOMER_PHONE&quot;) VALUES (:CUSTOMER_ID, :CUSTOMER_NAME, :CUSTOMER_ADDRESS, :CUSTOMER_PHONE)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE &quot;CUSTOMER&quot; SET &quot;CUSTOMER_NAME&quot; = :CUSTOMER_NAME, &quot;CUSTOMER_ADDRESS&quot; = :CUSTOMER_ADDRESS, &quot;CUSTOMER_PHONE&quot; = :CUSTOMER_PHONE WHERE &quot;CUSTOMER_ID&quot; = :original_CUSTOMER_ID AND &quot;CUSTOMER_NAME&quot; = :original_CUSTOMER_NAME AND &quot;CUSTOMER_ADDRESS&quot; = :original_CUSTOMER_ADDRESS AND &quot;CUSTOMER_PHONE&quot; = :original_CUSTOMER_PHONE">
+            <DeleteParameters>
+                <asp:Parameter Name="original_CUSTOMER_ID" Type="Decimal" />
+                <asp:Parameter Name="original_CUSTOMER_NAME" Type="String" />
+                <asp:Parameter Name="original_CUSTOMER_ADDRESS" Type="String" />
+                <asp:Parameter Name="original_CUSTOMER_PHONE" Type="String" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="CUSTOMER_ID" Type="Decimal" />
+                <asp:Parameter Name="CUSTOMER_NAME" Type="String" />
+                <asp:Parameter Name="CUSTOMER_ADDRESS" Type="String" />
+                <asp:Parameter Name="CUSTOMER_PHONE" Type="String" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="CUSTOMER_NAME" Type="String" />
+                <asp:Parameter Name="CUSTOMER_ADDRESS" Type="String" />
+                <asp:Parameter Name="CUSTOMER_PHONE" Type="String" />
+                <asp:Parameter Name="original_CUSTOMER_ID" Type="Decimal" />
+                <asp:Parameter Name="original_CUSTOMER_NAME" Type="String" />
+                <asp:Parameter Name="original_CUSTOMER_ADDRESS" Type="String" />
+                <asp:Parameter Name="original_CUSTOMER_PHONE" Type="String" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
     </form>
 
     </div>

@@ -130,17 +130,13 @@
 
 
                             <h1 class="page-header">Tour Guide Table Details</h1>
-                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="PACKAGE_ID,STAFF_ID">
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="PACKAGE_ID,STAFF_ID" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
+                                    <asp:CommandField ShowDeleteButton="True" ShowSelectButton="True" />
                                     <asp:BoundField DataField="PACKAGE_ID" HeaderText="PACKAGE_ID" SortExpression="PACKAGE_ID" ReadOnly="True" />
                                     <asp:BoundField DataField="STAFF_ID" HeaderText="STAFF_ID" SortExpression="STAFF_ID" ReadOnly="True" />
-                                     <asp:TemplateField ItemStyle-Height="50px">
-                                        <ItemTemplate>
-                                            <asp:Button class="btn btn-success" HeaedrText="Edit" Text="Edit" runat="server" />
-                                            <asp:Button class="btn btn-danger" HeaedrText="Delete" Text="Delete" runat="server" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
+                                     
                                 </Columns>
                                 <EditRowStyle BackColor="#7C6F57" />
                                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -155,7 +151,16 @@
                             </asp:GridView>
             </asp:Panel>
         </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=sulav;Password=sulav;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="SELECT * FROM &quot;TOUR_GUIDE&quot;"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=sulav;Password=sulav;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="SELECT * FROM &quot;TOUR_GUIDE&quot;" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM &quot;TOUR_GUIDE&quot; WHERE &quot;PACKAGE_ID&quot; = :original_PACKAGE_ID AND &quot;STAFF_ID&quot; = :original_STAFF_ID" InsertCommand="INSERT INTO &quot;TOUR_GUIDE&quot; (&quot;PACKAGE_ID&quot;, &quot;STAFF_ID&quot;) VALUES (:PACKAGE_ID, :STAFF_ID)" OldValuesParameterFormatString="original_{0}">
+            <DeleteParameters>
+                <asp:Parameter Name="original_PACKAGE_ID" Type="String" />
+                <asp:Parameter Name="original_STAFF_ID" Type="Decimal" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="PACKAGE_ID" Type="String" />
+                <asp:Parameter Name="STAFF_ID" Type="Decimal" />
+            </InsertParameters>
+        </asp:SqlDataSource>
     </form>
 
     </div>

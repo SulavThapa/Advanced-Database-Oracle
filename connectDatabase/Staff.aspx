@@ -130,21 +130,17 @@
 
 
                             <h1 class="page-header">Staff Details</h1>
-                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="STAFF_ID">
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="STAFF_ID" AllowSorting="True">
                                 <RowStyle CssClass="RowStyle" />
                                 <AlternatingRowStyle CssClass="AlternateRowStyle" BackColor="White" />
                                 <Columns>
-                                    <asp:BoundField DataField="STAFF_ID" HeaderText="STAFF_ID" SortExpression="STAFF_ID" ReadOnly="True" />
+                                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                                    <asp:BoundField DataField="STAFF_ID" HeaderText="STAFF ID" SortExpression="STAFF_ID" ReadOnly="True" />
                                     <asp:BoundField DataField="STAFF_NAME" HeaderText="STAFF_NAME" SortExpression="STAFF_NAME" />
                                     <asp:BoundField DataField="STAFF_ROLE" HeaderText="STAFF_ROLE" SortExpression="STAFF_ROLE" />
                                     <asp:BoundField DataField="STAFF_ADDRESS" HeaderText="STAFF_ADDRESS" SortExpression="STAFF_ADDRESS" />
                                     <asp:BoundField DataField="STAFF_PHONE" HeaderText="STAFF_PHONE" SortExpression="STAFF_PHONE" />
-                                     <asp:TemplateField ItemStyle-Height="50px">
-                                        <ItemTemplate>
-                                            <asp:Button class="btn btn-success" HeaedrText="Edit" Text="Edit" runat="server" />
-                                            <asp:Button class="btn btn-danger" HeaedrText="Delete" Text="Delete" runat="server" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
+                                     
                                 </Columns>
                                 <EditRowStyle BackColor="#7C6F57" />
                                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -159,7 +155,25 @@
                             </asp:GridView>
             </asp:Panel>
         </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=sulav;Password=sulav;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="SELECT * FROM &quot;STAFF&quot;"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=sulav;Password=sulav;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="SELECT * FROM &quot;STAFF&quot;" DeleteCommand="DELETE FROM &quot;STAFF&quot; WHERE &quot;STAFF_ID&quot; = :STAFF_ID" InsertCommand="INSERT INTO &quot;STAFF&quot; (&quot;STAFF_ID&quot;, &quot;STAFF_NAME&quot;, &quot;STAFF_ROLE&quot;, &quot;STAFF_ADDRESS&quot;, &quot;STAFF_PHONE&quot;) VALUES (:STAFF_ID, :STAFF_NAME, :STAFF_ROLE, :STAFF_ADDRESS, :STAFF_PHONE)" UpdateCommand="UPDATE &quot;STAFF&quot; SET &quot;STAFF_NAME&quot; = :STAFF_NAME, &quot;STAFF_ROLE&quot; = :STAFF_ROLE, &quot;STAFF_ADDRESS&quot; = :STAFF_ADDRESS, &quot;STAFF_PHONE&quot; = :STAFF_PHONE WHERE &quot;STAFF_ID&quot; = :STAFF_ID">
+            <DeleteParameters>
+                <asp:Parameter Name="STAFF_ID" Type="Decimal" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="STAFF_ID" Type="Decimal" />
+                <asp:Parameter Name="STAFF_NAME" Type="String" />
+                <asp:Parameter Name="STAFF_ROLE" Type="Decimal" />
+                <asp:Parameter Name="STAFF_ADDRESS" Type="String" />
+                <asp:Parameter Name="STAFF_PHONE" Type="String" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="STAFF_NAME" Type="String" />
+                <asp:Parameter Name="STAFF_ROLE" Type="Decimal" />
+                <asp:Parameter Name="STAFF_ADDRESS" Type="String" />
+                <asp:Parameter Name="STAFF_PHONE" Type="String" />
+                <asp:Parameter Name="STAFF_ID" Type="Decimal" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
     </form>
 
     </div>

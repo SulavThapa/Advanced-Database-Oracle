@@ -130,21 +130,17 @@
 
 
                             <h1 class="page-header">Package Table Details</h1>
-                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="PACKAGE_ID">
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="PACKAGE_ID" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
+                                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                                     <asp:BoundField DataField="PACKAGE_ID" HeaderText="PACKAGE_ID" SortExpression="PACKAGE_ID" ReadOnly="True" />
                                     <asp:BoundField DataField="PACKAGE_NAME" HeaderText="PACKAGE_NAME" SortExpression="PACKAGE_NAME" />
                                     <asp:BoundField DataField="DIFFICULTY" HeaderText="DIFFICULTY" SortExpression="DIFFICULTY" />
                                     <asp:BoundField DataField="START_DATE" HeaderText="START_DATE" SortExpression="START_DATE" />
                                     <asp:BoundField DataField="END_DATE" HeaderText="END_DATE" SortExpression="END_DATE" />
                                     <asp:BoundField DataField="DAY" HeaderText="DAY" SortExpression="DAY" />
-                                     <asp:TemplateField ItemStyle-Height="50px">
-                                        <ItemTemplate>
-                                            <asp:Button class="btn btn-success" HeaedrText="Edit" Text="Edit" runat="server" />
-                                            <asp:Button class="btn btn-danger" HeaedrText="Delete" Text="Delete" runat="server" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
+                                     
                                 </Columns>
                                 <EditRowStyle BackColor="#7C6F57" />
                                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -159,7 +155,37 @@
                             </asp:GridView>
             </asp:Panel>
         </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=sulav;Password=sulav;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="SELECT * FROM &quot;PACKAGE&quot;"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=sulav;Password=sulav;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="SELECT * FROM &quot;PACKAGE&quot;" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM &quot;PACKAGE&quot; WHERE &quot;PACKAGE_ID&quot; = :original_PACKAGE_ID AND &quot;PACKAGE_NAME&quot; = :original_PACKAGE_NAME AND &quot;DIFFICULTY&quot; = :original_DIFFICULTY AND &quot;START_DATE&quot; = :original_START_DATE AND &quot;END_DATE&quot; = :original_END_DATE AND &quot;DAY&quot; = :original_DAY" InsertCommand="INSERT INTO &quot;PACKAGE&quot; (&quot;PACKAGE_ID&quot;, &quot;PACKAGE_NAME&quot;, &quot;DIFFICULTY&quot;, &quot;START_DATE&quot;, &quot;END_DATE&quot;, &quot;DAY&quot;) VALUES (:PACKAGE_ID, :PACKAGE_NAME, :DIFFICULTY, :START_DATE, :END_DATE, :DAY)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE &quot;PACKAGE&quot; SET &quot;PACKAGE_NAME&quot; = :PACKAGE_NAME, &quot;DIFFICULTY&quot; = :DIFFICULTY, &quot;START_DATE&quot; = :START_DATE, &quot;END_DATE&quot; = :END_DATE, &quot;DAY&quot; = :DAY WHERE &quot;PACKAGE_ID&quot; = :original_PACKAGE_ID AND &quot;PACKAGE_NAME&quot; = :original_PACKAGE_NAME AND &quot;DIFFICULTY&quot; = :original_DIFFICULTY AND &quot;START_DATE&quot; = :original_START_DATE AND &quot;END_DATE&quot; = :original_END_DATE AND &quot;DAY&quot; = :original_DAY">
+            <DeleteParameters>
+                <asp:Parameter Name="original_PACKAGE_ID" Type="String" />
+                <asp:Parameter Name="original_PACKAGE_NAME" Type="String" />
+                <asp:Parameter Name="original_DIFFICULTY" Type="String" />
+                <asp:Parameter Name="original_START_DATE" Type="DateTime" />
+                <asp:Parameter Name="original_END_DATE" Type="DateTime" />
+                <asp:Parameter Name="original_DAY" Type="Decimal" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="PACKAGE_ID" Type="String" />
+                <asp:Parameter Name="PACKAGE_NAME" Type="String" />
+                <asp:Parameter Name="DIFFICULTY" Type="String" />
+                <asp:Parameter Name="START_DATE" Type="DateTime" />
+                <asp:Parameter Name="END_DATE" Type="DateTime" />
+                <asp:Parameter Name="DAY" Type="Decimal" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="PACKAGE_NAME" Type="String" />
+                <asp:Parameter Name="DIFFICULTY" Type="String" />
+                <asp:Parameter Name="START_DATE" Type="DateTime" />
+                <asp:Parameter Name="END_DATE" Type="DateTime" />
+                <asp:Parameter Name="DAY" Type="Decimal" />
+                <asp:Parameter Name="original_PACKAGE_ID" Type="String" />
+                <asp:Parameter Name="original_PACKAGE_NAME" Type="String" />
+                <asp:Parameter Name="original_DIFFICULTY" Type="String" />
+                <asp:Parameter Name="original_START_DATE" Type="DateTime" />
+                <asp:Parameter Name="original_END_DATE" Type="DateTime" />
+                <asp:Parameter Name="original_DAY" Type="Decimal" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
     </form>
 
     </div>

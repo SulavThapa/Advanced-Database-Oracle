@@ -87,21 +87,17 @@
                             <hr />
 
                             <h1 class="page-header">Tour Details</h1>
-                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="DETAIL_ID,PACKAGE_ID">
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="DETAIL_ID,PACKAGE_ID" AllowSorting="True">
                                 <RowStyle cssClass="RowStyle" />
                                 <AlternatingRowStyle cssClass="AlternateRowStyle" BackColor="White" />
                                 <Columns>
+                                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                                     <asp:BoundField DataField="DETAIL_ID" HeaderText="DETAIL_ID" SortExpression="DETAIL_ID" ReadOnly="True"/>
                                     <asp:BoundField DataField="DAY" HeaderText="DAY" SortExpression="DAY" />
                                     <asp:BoundField DataField="TRAVEL_DETAILS" HeaderText="TRAVEL_DETAILS" SortExpression="TRAVEL_DETAILS" />
                                     <asp:BoundField DataField="STATUS" HeaderText="STATUS" SortExpression="STATUS" />
                                     <asp:BoundField DataField="PACKAGE_ID" HeaderText="PACKAGE_ID" ReadOnly="True" SortExpression="PACKAGE_ID" />
-                                     <asp:TemplateField ItemStyle-Height="50px">
-                                        <ItemTemplate>
-                                            <asp:Button class="btn btn-success" HeaedrText="Edit" Text="Edit" runat="server" />
-                                            <asp:Button class="btn btn-danger" HeaedrText="Delete" Text="Delete" runat="server" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
+                                     
                                 </Columns>
                                 <EditRowStyle BackColor="#7C6F57" />
                                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -116,7 +112,32 @@
                             </asp:GridView>
             </asp:Panel>
         </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=sulav;Password=sulav;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="SELECT * FROM &quot;PACKAGE_INFO&quot;"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=sulav;Password=sulav;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="SELECT * FROM &quot;PACKAGE_INFO&quot;" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM &quot;PACKAGE_INFO&quot; WHERE &quot;DETAIL_ID&quot; = :original_DETAIL_ID AND &quot;PACKAGE_ID&quot; = :original_PACKAGE_ID AND &quot;DAY&quot; = :original_DAY AND &quot;TRAVEL_DETAILS&quot; = :original_TRAVEL_DETAILS AND &quot;STATUS&quot; = :original_STATUS" InsertCommand="INSERT INTO &quot;PACKAGE_INFO&quot; (&quot;DETAIL_ID&quot;, &quot;DAY&quot;, &quot;TRAVEL_DETAILS&quot;, &quot;STATUS&quot;, &quot;PACKAGE_ID&quot;) VALUES (:DETAIL_ID, :DAY, :TRAVEL_DETAILS, :STATUS, :PACKAGE_ID)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE &quot;PACKAGE_INFO&quot; SET &quot;DAY&quot; = :DAY, &quot;TRAVEL_DETAILS&quot; = :TRAVEL_DETAILS, &quot;STATUS&quot; = :STATUS WHERE &quot;DETAIL_ID&quot; = :original_DETAIL_ID AND &quot;PACKAGE_ID&quot; = :original_PACKAGE_ID AND &quot;DAY&quot; = :original_DAY AND &quot;TRAVEL_DETAILS&quot; = :original_TRAVEL_DETAILS AND &quot;STATUS&quot; = :original_STATUS">
+            <DeleteParameters>
+                <asp:Parameter Name="original_DETAIL_ID" Type="Decimal" />
+                <asp:Parameter Name="original_PACKAGE_ID" Type="String" />
+                <asp:Parameter Name="original_DAY" Type="String" />
+                <asp:Parameter Name="original_TRAVEL_DETAILS" Type="String" />
+                <asp:Parameter Name="original_STATUS" Type="String" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="DETAIL_ID" Type="Decimal" />
+                <asp:Parameter Name="DAY" Type="String" />
+                <asp:Parameter Name="TRAVEL_DETAILS" Type="String" />
+                <asp:Parameter Name="STATUS" Type="String" />
+                <asp:Parameter Name="PACKAGE_ID" Type="String" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="DAY" Type="String" />
+                <asp:Parameter Name="TRAVEL_DETAILS" Type="String" />
+                <asp:Parameter Name="STATUS" Type="String" />
+                <asp:Parameter Name="original_DETAIL_ID" Type="Decimal" />
+                <asp:Parameter Name="original_PACKAGE_ID" Type="String" />
+                <asp:Parameter Name="original_DAY" Type="String" />
+                <asp:Parameter Name="original_TRAVEL_DETAILS" Type="String" />
+                <asp:Parameter Name="original_STATUS" Type="String" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
     </form>
 
     </div>
