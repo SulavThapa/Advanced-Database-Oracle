@@ -71,35 +71,66 @@
                             </ul>
                         </div>
                         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                            <button class=" btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                Add Details
-                            </button>
-                            <hr />
-                            <div class="collapse" id="collapseExample">
-                                <div class="card card-body">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="imputName">
-                                            Name</label>
-                                            <input id="inputName" class="form-control" type="text" placeholder="Ram Khadka"> </input></div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputPhone">
-                                            Phone</label>
-                                            <input id="inputPhone" class="form-control" type="text" placeholder="123456789"> </input></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputAddress">
-                                        Address</label>
-                                        <input id="inputAddress" class="form-control" placeholder="Bhaktapur" type="text"> </input></div>
-                                    <button class="btn btn-primary" type="submit">
-                                        Submit
-                                    </button>
-                                    <hr />
-                                </div>
-                            </div>
+                            
 
 
                             <h1 class="page-header">Customer Table Details</h1>
+                            <asp:FormView ID="FormView1" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" DataKeyNames="CUSTOMER_ID" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Both">
+                                <EditItemTemplate>
+                                    CUSTOMER_ID:
+                                    <asp:Label ID="CUSTOMER_IDLabel1" runat="server" Text='<%# Eval("CUSTOMER_ID") %>' />
+                                    <br />
+                                    CUSTOMER_NAME:
+                                    <asp:TextBox ID="CUSTOMER_NAMETextBox" runat="server" Text='<%# Bind("CUSTOMER_NAME") %>' />
+                                    <br />
+                                    CUSTOMER_ADDRESS:
+                                    <asp:TextBox ID="CUSTOMER_ADDRESSTextBox" runat="server" Text='<%# Bind("CUSTOMER_ADDRESS") %>' />
+                                    <br />
+                                    CUSTOMER_PHONE:
+                                    <asp:TextBox ID="CUSTOMER_PHONETextBox" runat="server" Text='<%# Bind("CUSTOMER_PHONE") %>' />
+                                    <br />
+                                    <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
+                                    &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                                </EditItemTemplate>
+                                <EditRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                <FooterStyle BackColor="#CCCCCC" />
+                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                <InsertItemTemplate>
+                                    CUSTOMER_ID:
+                                    <asp:TextBox ID="CUSTOMER_IDTextBox" runat="server" Text='<%# Bind("CUSTOMER_ID") %>' />
+                                    <br />
+                                    CUSTOMER_NAME:
+                                    <asp:TextBox ID="CUSTOMER_NAMETextBox" runat="server" Text='<%# Bind("CUSTOMER_NAME") %>' />
+                                    <br />
+                                    CUSTOMER_ADDRESS:
+                                    <asp:TextBox ID="CUSTOMER_ADDRESSTextBox" runat="server" Text='<%# Bind("CUSTOMER_ADDRESS") %>' />
+                                    <br />
+                                    CUSTOMER_PHONE:
+                                    <asp:TextBox ID="CUSTOMER_PHONETextBox" runat="server" Text='<%# Bind("CUSTOMER_PHONE") %>' />
+                                    <br />
+                                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
+                                    &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    CUSTOMER_ID:
+                                    <asp:Label ID="CUSTOMER_IDLabel" runat="server" Text='<%# Eval("CUSTOMER_ID") %>' />
+                                    <br />
+                                    CUSTOMER_NAME:
+                                    <asp:Label ID="CUSTOMER_NAMELabel" runat="server" Text='<%# Bind("CUSTOMER_NAME") %>' />
+                                    <br />
+                                    CUSTOMER_ADDRESS:
+                                    <asp:Label ID="CUSTOMER_ADDRESSLabel" runat="server" Text='<%# Bind("CUSTOMER_ADDRESS") %>' />
+                                    <br />
+                                    CUSTOMER_PHONE:
+                                    <asp:Label ID="CUSTOMER_PHONELabel" runat="server" Text='<%# Bind("CUSTOMER_PHONE") %>' />
+                                    <br />
+                                    <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
+                                    &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
+                                    &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="New" />
+                                </ItemTemplate>
+                                <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                                <RowStyle BackColor="White" />
+                            </asp:FormView>
                             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="CUSTOMER_ID" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
