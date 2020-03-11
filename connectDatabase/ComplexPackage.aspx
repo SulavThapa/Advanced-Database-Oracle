@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Tour_Guide.aspx.cs" Inherits="connectDatabase.Tour_Guide" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ComplexPackage.aspx.cs" Inherits="connectDatabase.ComplexPackage" %>
 
 <!DOCTYPE html>
 
@@ -59,62 +59,62 @@
                     <div class="row">
                         <div class="col-sm-3 col-md-2 sidebar">
                             <ul class="nav nav-sidebar">
-                                 <li><a href="Staff.aspx">Staff</a></li>
+                                <li><a href="Staff.aspx">Staff</a></li>
                                 <li><a href="Customer.aspx">Customers</a></li>
                                 <li><a href="Designation.aspx">Designation</a></li>
                                 <li><a href="Package.aspx">Packages</a></li>
-                                <li><a href="Role.aspx">Roles</a></li>
-                                <li><a href="ComplexPackage.aspx">Tour Details</a></li>
-                                <li class="active"><a href="#">Tour Guides</a></li>
-                            </ul>
-                         
-                            <ul class="nav nav-sidebar">
+                                <li><a href="Tour_Guide.aspx">Tour Guides</a></li>
                                 <li><a href="TourDetails.aspx">Tour Details</a></li>
+                                <li><a href="Role.aspx">Roles</a></li>
+                            </ul>
+                           
+                            <ul class="nav nav-sidebar">
+                                <li class="active"><a href="#">Complex package</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                           
+                                <asp:DropDownList ID="DropDownList1" runat="server"
+                                    DataSourceID="SqlDataSource1"
+                                    DataTextField="PACKAGE_NAME"
+                                    AppendDataBoundItems="true"
+                                    AutoPostBack="true">
+                                    <%--<asp:ListItem>
+                                        All ITEMS
+                                    </asp:ListItem>--%>
+                                    <asp:ListItem Value="">All Activities</asp:ListItem>
+                                </asp:DropDownList>
+                            <hr />
 
-
-                            <h1 class="page-header">Tour Guide Table Details</h1>
-                            <asp:FormView ID="FormView1" runat="server" DataKeyNames="PACKAGE_ID,STAFF_ID" DataSourceID="SqlDataSource1">
-                                <EditItemTemplate>
-                                    PACKAGE_ID:
-                                    <asp:Label ID="PACKAGE_IDLabel1" runat="server" Text='<%# Eval("PACKAGE_ID") %>' />
-                                    <br />
-                                    STAFF_ID:
-                                    <asp:Label ID="STAFF_IDLabel1" runat="server" Text='<%# Eval("STAFF_ID") %>' />
-                                    <br />
-                                    <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
-                                    &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
-                                </EditItemTemplate>
-                                <InsertItemTemplate>
-                                    PACKAGE_ID:
-                                    <asp:TextBox ID="PACKAGE_IDTextBox" runat="server" Text='<%# Bind("PACKAGE_ID") %>' />
-                                    <br />
-                                    STAFF_ID:
-                                    <asp:TextBox ID="STAFF_IDTextBox" runat="server" Text='<%# Bind("STAFF_ID") %>' />
-                                    <br />
-                                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
-                                    &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
-                                </InsertItemTemplate>
-                                <ItemTemplate>
-                                    PACKAGE_ID:
-                                    <asp:Label ID="PACKAGE_IDLabel" runat="server" Text='<%# Eval("PACKAGE_ID") %>' />
-                                    <br />
-                                    STAFF_ID:
-                                    <asp:Label ID="STAFF_IDLabel" runat="server" Text='<%# Eval("STAFF_ID") %>' />
-                                    <br />
-                                    <asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
-                                    &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="New" />
-                                </ItemTemplate>
-                            </asp:FormView>
-                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="PACKAGE_ID,STAFF_ID" AllowSorting="True">
-                                <AlternatingRowStyle BackColor="White" />
+                            <h1 class="page-header">Roles</h1>
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT p.package_id, p.package_name, p.difficulty, p.start_date, pi.detail_id, pi.day, pi.travel_details, pi.status, ai.activites, ai.activities_id, ai.travel_mode
+FROM package p
+JOIN activities a
+ON p.package_id = a.package_id
+JOIN package_info pi
+ON pi.detail_id = a.detail_id
+JOIN activities_info ai
+ON ai.activities_id = a.activities_id" FilterExpression="PACKAGE_NAME='{0}'">
+                                     <FilterParameters>
+                <asp:ControlParameter ControlID="DropDownList1" Name="ROLE_NAME" PropertyName="SelectedValue"/>
+            </FilterParameters>
+                                </asp:SqlDataSource>
+                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;PACKAGE_NAME&quot; FROM &quot;PACKAGE&quot;"></asp:SqlDataSource>
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="PACKAGE_ID,ACTIVITIES_ID" AllowSorting="True">
+                                <RowStyle cssClass="RowStyle" />
+                                <AlternatingRowStyle cssClass="AlternateRowStyle" BackColor="White" />
                                 <Columns>
-                                    <asp:CommandField ShowDeleteButton="True" ShowSelectButton="True" />
-                                    <asp:BoundField DataField="PACKAGE_ID" HeaderText="PACKAGE_ID" SortExpression="PACKAGE_ID" ReadOnly="True" />
-                                    <asp:BoundField DataField="STAFF_ID" HeaderText="STAFF_ID" SortExpression="STAFF_ID" ReadOnly="True" />
+                                    <asp:BoundField DataField="PACKAGE_ID" HeaderText="PACKAGE_ID" ReadOnly="True" SortExpression="PACKAGE_ID" />
+                                    <asp:BoundField DataField="PACKAGE_NAME" HeaderText="PACKAGE_NAME" SortExpression="PACKAGE_NAME" />
+                                    <asp:BoundField DataField="DIFFICULTY" HeaderText="DIFFICULTY" SortExpression="DIFFICULTY" />
+                                    <asp:BoundField DataField="START_DATE" HeaderText="START_DATE" SortExpression="START_DATE" />
+                                    <asp:BoundField DataField="DETAIL_ID" HeaderText="DETAIL_ID" SortExpression="DETAIL_ID"/>
+                                     
+                                    <asp:BoundField DataField="DAY" HeaderText="DAY" SortExpression="DAY" />
+                                    <asp:BoundField DataField="TRAVEL_DETAILS" HeaderText="TRAVEL_DETAILS" SortExpression="TRAVEL_DETAILS" />
+                                    <asp:BoundField DataField="STATUS" HeaderText="STATUS" SortExpression="STATUS" />
+                                    <asp:BoundField DataField="ACTIVITES" HeaderText="ACTIVITES" SortExpression="ACTIVITES" />
+                                    <asp:BoundField DataField="ACTIVITIES_ID" HeaderText="ACTIVITIES_ID" ReadOnly="True" SortExpression="ACTIVITIES_ID" />
+                                    <asp:BoundField DataField="TRAVEL_MODE" HeaderText="TRAVEL_MODE" SortExpression="TRAVEL_MODE" />
                                      
                                 </Columns>
                                 <EditRowStyle BackColor="#7C6F57" />
@@ -130,17 +130,6 @@
                             </asp:GridView>
             </asp:Panel>
         </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=sulav;Password=sulav;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="SELECT * FROM &quot;TOUR_GUIDE&quot;" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM &quot;TOUR_GUIDE&quot; WHERE &quot;PACKAGE_ID&quot; = :original_PACKAGE_ID AND &quot;STAFF_ID&quot; = :original_STAFF_ID" InsertCommand="INSERT INTO &quot;TOUR_GUIDE&quot; (&quot;PACKAGE_ID&quot;, &quot;STAFF_ID&quot;) VALUES (:PACKAGE_ID, :STAFF_ID)" OldValuesParameterFormatString="original_{0}">
-            <DeleteParameters>
-                <asp:Parameter Name="original_PACKAGE_ID" Type="String" />
-                <asp:Parameter Name="original_STAFF_ID" Type="Decimal" />
-            </DeleteParameters>
-            <InsertParameters>
-                <asp:Parameter Name="PACKAGE_ID" Type="String" />
-                <asp:Parameter Name="STAFF_ID" Type="Decimal" />
-            </InsertParameters>
-        </asp:SqlDataSource>
-    </form>
 
     </div>
         </div>
@@ -170,4 +159,8 @@
     <script src="../../assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    </form>
+
+    
 </html>
+

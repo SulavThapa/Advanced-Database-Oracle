@@ -64,6 +64,8 @@
                                 <li><a href="Designation.aspx">Designation</a></li>
                                 <li><a href="Package.aspx">Packages</a></li>
                                 <li><a href="Tour_Guide.aspx">Tour Guides</a></li>
+                                <li><a href="Role.aspx">Roles</a></li>
+                                <li><a href="ComplexPackage.aspx">Tour Details</a></li>
                             </ul>
 
                             <ul class="nav nav-sidebar">
@@ -71,65 +73,70 @@
                             </ul>
                         </div>
                         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                            <button class=" btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                Add Details
-                            </button>
-                            <hr />
-                            <div class="collapse" id="collapseExample">
-                                <div class="card card-body">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputEmail4">
-                                            Email</label>
-                                            <input id="inputEmail4" class="form-control" type="email"> </input></div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputPassword4">
-                                            Password</label>
-                                            <input id="inputPassword4" class="form-control" type="password"> </input></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputAddress">
-                                        Address</label>
-                                        <input id="inputAddress" class="form-control" placeholder="1234 Main St" type="text"> </input></div>
-                                    <div class="form-group">
-                                        <label for="inputAddress2">
-                                        Address 2</label>
-                                        <input id="inputAddress2" class="form-control" placeholder="Apartment, studio, or floor" type="text"> </input></div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputCity">
-                                            City</label>
-                                            <input id="inputCity" class="form-control" type="text"> </input></div>
-                                        <div class="form-group col-md-4">
-                                            <label for="inputState">
-                                            State</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected="">Choose...</option>
-                                                <option>...</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label for="inputZip">
-                                            Zip</label>
-                                            <input id="inputZip" class="form-control" type="text"> </input></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <input id="gridCheck" class="form-check-input" type="checkbox">
-                                            <label class="form-check-label" for="gridCheck">
-                                            Check me out
-                                            </label>
-                                            </input></div>
-                                    </div>
-                                    <button class="btn btn-primary" type="submit">
-                                        Sign in
-                                    </button>
-                                    <hr />
-                                </div>
-                            </div>
+                          
 
 
                             <h1 class="page-header">Staff Details</h1>
+                            <asp:FormView ID="FormView2" runat="server" DataKeyNames="STAFF_ID" DataSourceID="SqlDataSource1">
+                                <EditItemTemplate>
+                                    STAFF_ID:
+                                    <asp:Label ID="STAFF_IDLabel1" runat="server" Text='<%# Eval("STAFF_ID") %>' />
+                                    <br />
+                                    STAFF_NAME:
+                                    <asp:TextBox ID="STAFF_NAMETextBox" runat="server" Text='<%# Bind("STAFF_NAME") %>' />
+                                    <br />
+                                    STAFF_ROLE:
+                                    <asp:TextBox ID="STAFF_ROLETextBox" runat="server" Text='<%# Bind("STAFF_ROLE") %>' />
+                                    <br />
+                                    STAFF_ADDRESS:
+                                    <asp:TextBox ID="STAFF_ADDRESSTextBox" runat="server" Text='<%# Bind("STAFF_ADDRESS") %>' />
+                                    <br />
+                                    STAFF_PHONE:
+                                    <asp:TextBox ID="STAFF_PHONETextBox" runat="server" Text='<%# Bind("STAFF_PHONE") %>' />
+                                    <br />
+                                    <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
+                                    &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    STAFF_ID:
+                                    <asp:TextBox ID="STAFF_IDTextBox" runat="server" Text='<%# Bind("STAFF_ID") %>' />
+                                    <br />
+                                    STAFF_NAME:
+                                    <asp:TextBox ID="STAFF_NAMETextBox" runat="server" Text='<%# Bind("STAFF_NAME") %>' />
+                                    <br />
+                                    STAFF_ROLE:
+                                    <asp:TextBox ID="STAFF_ROLETextBox" runat="server" Text='<%# Bind("STAFF_ROLE") %>' />
+                                    <br />
+                                    STAFF_ADDRESS:
+                                    <asp:TextBox ID="STAFF_ADDRESSTextBox" runat="server" Text='<%# Bind("STAFF_ADDRESS") %>' />
+                                    <br />
+                                    STAFF_PHONE:
+                                    <asp:TextBox ID="STAFF_PHONETextBox" runat="server" Text='<%# Bind("STAFF_PHONE") %>' />
+                                    <br />
+                                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
+                                    &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    STAFF_ID:
+                                    <asp:Label ID="STAFF_IDLabel" runat="server" Text='<%# Eval("STAFF_ID") %>' />
+                                    <br />
+                                    STAFF_NAME:
+                                    <asp:Label ID="STAFF_NAMELabel" runat="server" Text='<%# Bind("STAFF_NAME") %>' />
+                                    <br />
+                                    STAFF_ROLE:
+                                    <asp:Label ID="STAFF_ROLELabel" runat="server" Text='<%# Bind("STAFF_ROLE") %>' />
+                                    <br />
+                                    STAFF_ADDRESS:
+                                    <asp:Label ID="STAFF_ADDRESSLabel" runat="server" Text='<%# Bind("STAFF_ADDRESS") %>' />
+                                    <br />
+                                    STAFF_PHONE:
+                                    <asp:Label ID="STAFF_PHONELabel" runat="server" Text='<%# Bind("STAFF_PHONE") %>' />
+                                    <br />
+                                    <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
+                                    &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
+                                    &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="New" />
+                                </ItemTemplate>
+                            </asp:FormView>
                             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="STAFF_ID" AllowSorting="True">
                                 <RowStyle CssClass="RowStyle" />
                                 <AlternatingRowStyle CssClass="AlternateRowStyle" BackColor="White" />

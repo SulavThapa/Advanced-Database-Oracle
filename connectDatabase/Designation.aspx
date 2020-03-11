@@ -63,6 +63,7 @@
                                 <li><a href="Customer.aspx">Customers</a></li>
                                 <li class="active"><a href="#">Designation</a></li>
                                 <li><a href="Package.aspx">Packages</a></li>
+                                <li><a href="Role.aspx">Roles</a></li>
                                 <li><a href="Tour_Guide.aspx">Tour Guides</a></li>
                             </ul>
                          
@@ -71,65 +72,43 @@
                             </ul>
                         </div>
                         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                            <button class=" btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                Add Details
-                            </button>
-                            <hr />
-                            <div class="collapse" id="collapseExample">
-                                <div class="card card-body">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputEmail4">
-                                            Email</label>
-                                            <input id="inputEmail4" class="form-control" type="email"> </input></div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputPassword4">
-                                            Password</label>
-                                            <input id="inputPassword4" class="form-control" type="password"> </input></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputAddress">
-                                        Address</label>
-                                        <input id="inputAddress" class="form-control" placeholder="1234 Main St" type="text"> </input></div>
-                                    <div class="form-group">
-                                        <label for="inputAddress2">
-                                        Address 2</label>
-                                        <input id="inputAddress2" class="form-control" placeholder="Apartment, studio, or floor" type="text"> </input></div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputCity">
-                                            City</label>
-                                            <input id="inputCity" class="form-control" type="text"> </input></div>
-                                        <div class="form-group col-md-4">
-                                            <label for="inputState">
-                                            State</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected="">Choose...</option>
-                                                <option>...</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label for="inputZip">
-                                            Zip</label>
-                                            <input id="inputZip" class="form-control" type="text"> </input></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <input id="gridCheck" class="form-check-input" type="checkbox">
-                                            <label class="form-check-label" for="gridCheck">
-                                            Check me out
-                                            </label>
-                                            </input></div>
-                                    </div>
-                                    <button class="btn btn-primary" type="submit">
-                                        Sign in
-                                    </button>
-                                    <hr />
-                                </div>
-                            </div>
+                           
 
 
                             <h1 class="page-header">Designation Table Details</h1>
+                            <asp:FormView ID="FormView1" runat="server" DataKeyNames="ROLE_ID" DataSourceID="SqlDataSource1">
+                                <EditItemTemplate>
+                                    ROLE_ID:
+                                    <asp:Label ID="ROLE_IDLabel1" runat="server" Text='<%# Eval("ROLE_ID") %>' />
+                                    <br />
+                                    ROLE_NAME:
+                                    <asp:TextBox ID="ROLE_NAMETextBox" runat="server" Text='<%# Bind("ROLE_NAME") %>' />
+                                    <br />
+                                    <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
+                                    &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                                </EditItemTemplate>
+                                <InsertItemTemplate>
+                                    ROLE_ID:
+                                    <asp:TextBox ID="ROLE_IDTextBox" runat="server" Text='<%# Bind("ROLE_ID") %>' />
+                                    <br />
+                                    ROLE_NAME:
+                                    <asp:TextBox ID="ROLE_NAMETextBox" runat="server" Text='<%# Bind("ROLE_NAME") %>' />
+                                    <br />
+                                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
+                                    &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                                </InsertItemTemplate>
+                                <ItemTemplate>
+                                    ROLE_ID:
+                                    <asp:Label ID="ROLE_IDLabel" runat="server" Text='<%# Eval("ROLE_ID") %>' />
+                                    <br />
+                                    ROLE_NAME:
+                                    <asp:Label ID="ROLE_NAMELabel" runat="server" Text='<%# Bind("ROLE_NAME") %>' />
+                                    <br />
+                                    <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
+                                    &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
+                                    &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="New" />
+                                </ItemTemplate>
+                            </asp:FormView>
                             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="ROLE_ID" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>

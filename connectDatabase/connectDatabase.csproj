@@ -90,8 +90,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ComplexPackage.aspx" />
     <Content Include="Designation.aspx" />
     <Content Include="Package.aspx" />
+    <Content Include="Role.aspx" />
     <Content Include="Staff.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -215,6 +217,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComplexPackage.aspx.cs">
+      <DependentUpon>ComplexPackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComplexPackage.aspx.designer.cs">
+      <DependentUpon>ComplexPackage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Designation.aspx.cs">
       <DependentUpon>Designation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -228,6 +237,13 @@
     </Compile>
     <Compile Include="Package.aspx.designer.cs">
       <DependentUpon>Package.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Role.aspx.cs">
+      <DependentUpon>Role.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Role.aspx.designer.cs">
+      <DependentUpon>Role.aspx</DependentUpon>
     </Compile>
     <Compile Include="Staff.aspx.cs">
       <DependentUpon>Staff.aspx</DependentUpon>

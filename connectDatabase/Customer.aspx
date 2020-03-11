@@ -42,7 +42,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#" style="color: white">Advanced Database</a>
+                            <a class="navbar-brand" href="#" style="color: white">Jack Tour & Travel</a>
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">
@@ -63,6 +63,7 @@
                                 <li class="active"><a href="#">Customers</a></li>
                                 <li><a href="Designation.aspx">Designation</a></li>
                                 <li><a href="Package.aspx">Packages</a></li>
+                                <li><a href="Role.aspx">Roles</a></li>
                                 <li><a href="Tour_Guide.aspx">Tour Guides</a></li>
                             </ul>
                          

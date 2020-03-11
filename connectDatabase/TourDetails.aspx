@@ -64,6 +64,8 @@
                                 <li><a href="Designation.aspx">Designation</a></li>
                                 <li><a href="Package.aspx">Packages</a></li>
                                 <li><a href="Tour_Guide.aspx">Tour Guides</a></li>
+                                <li><a href="Role.aspx">Roles</a></li>
+                                <li><a href="ComplexPackage.aspx">Tour Details</a></li>                                
                             </ul>
                            
                             <ul class="nav nav-sidebar">
@@ -71,32 +73,32 @@
                             </ul>
                         </div>
                         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                            <div class="dropdown">
-                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                Dropdown
-                                <span class="caret"></span>
-                              </button>
-                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="#">Action</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Another action</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Something else here</a></li>
-                              </ul>
-                            </div>
+                                <asp:DropDownList ID="DropDownList1" runat="server"
+                                    DataSourceID="SqlDataSource2"
+                                    DataTextField="PACKAGE_NAME"
+                                    AppendDataBoundItems="true"
+                                    AutoPostBack="true">
+                                    <%--<asp:ListItem>
+                                        All ITEMS
+                                    </asp:ListItem>--%>
+                                    <asp:ListItem Value="">All Packages</asp:ListItem>
+                                </asp:DropDownList>
                             <hr />
 
                             <h1 class="page-header">Tour Details</h1>
-                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="DETAIL_ID,PACKAGE_ID" AllowSorting="True">
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource3" ForeColor="#333333" GridLines="None" Height="100%" Width="100%" DataKeyNames="CUSTOMER_ID,PACKAGE_ID" AllowSorting="True">
                                 <RowStyle cssClass="RowStyle" />
                                 <AlternatingRowStyle cssClass="AlternateRowStyle" BackColor="White" />
                                 <Columns>
-                                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-                                    <asp:BoundField DataField="DETAIL_ID" HeaderText="DETAIL_ID" SortExpression="DETAIL_ID" ReadOnly="True"/>
-                                    <asp:BoundField DataField="DAY" HeaderText="DAY" SortExpression="DAY" />
-                                    <asp:BoundField DataField="TRAVEL_DETAILS" HeaderText="TRAVEL_DETAILS" SortExpression="TRAVEL_DETAILS" />
-                                    <asp:BoundField DataField="STATUS" HeaderText="STATUS" SortExpression="STATUS" />
+                                    <asp:BoundField DataField="CUSTOMER_ID" HeaderText="CUSTOMER_ID" SortExpression="CUSTOMER_ID" ReadOnly="True"/>
+                                    <asp:BoundField DataField="CUSTOMER_NAME" HeaderText="CUSTOMER_NAME" SortExpression="CUSTOMER_NAME" />
+                                    <asp:BoundField DataField="CUSTOMER_ADDRESS" HeaderText="CUSTOMER_ADDRESS" SortExpression="CUSTOMER_ADDRESS" />
+                                    <asp:BoundField DataField="CUSTOMER_PHONE" HeaderText="CUSTOMER_PHONE" SortExpression="CUSTOMER_PHONE" />
                                     <asp:BoundField DataField="PACKAGE_ID" HeaderText="PACKAGE_ID" ReadOnly="True" SortExpression="PACKAGE_ID" />
+                                     
+                                    <asp:BoundField DataField="PACKAGE_NAME" HeaderText="PACKAGE_NAME" SortExpression="PACKAGE_NAME" />
+                                    <asp:BoundField DataField="DIFFICULTY" HeaderText="DIFFICULTY" SortExpression="DIFFICULTY" />
+                                    <asp:BoundField DataField="START_DATE" HeaderText="START_DATE" SortExpression="START_DATE" />
                                      
                                 </Columns>
                                 <EditRowStyle BackColor="#7C6F57" />
@@ -112,33 +114,6 @@
                             </asp:GridView>
             </asp:Panel>
         </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=xe;Persist Security Info=True;User ID=sulav;Password=sulav;Unicode=True" ProviderName="System.Data.OracleClient" SelectCommand="SELECT * FROM &quot;PACKAGE_INFO&quot;" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM &quot;PACKAGE_INFO&quot; WHERE &quot;DETAIL_ID&quot; = :original_DETAIL_ID AND &quot;PACKAGE_ID&quot; = :original_PACKAGE_ID AND &quot;DAY&quot; = :original_DAY AND &quot;TRAVEL_DETAILS&quot; = :original_TRAVEL_DETAILS AND &quot;STATUS&quot; = :original_STATUS" InsertCommand="INSERT INTO &quot;PACKAGE_INFO&quot; (&quot;DETAIL_ID&quot;, &quot;DAY&quot;, &quot;TRAVEL_DETAILS&quot;, &quot;STATUS&quot;, &quot;PACKAGE_ID&quot;) VALUES (:DETAIL_ID, :DAY, :TRAVEL_DETAILS, :STATUS, :PACKAGE_ID)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE &quot;PACKAGE_INFO&quot; SET &quot;DAY&quot; = :DAY, &quot;TRAVEL_DETAILS&quot; = :TRAVEL_DETAILS, &quot;STATUS&quot; = :STATUS WHERE &quot;DETAIL_ID&quot; = :original_DETAIL_ID AND &quot;PACKAGE_ID&quot; = :original_PACKAGE_ID AND &quot;DAY&quot; = :original_DAY AND &quot;TRAVEL_DETAILS&quot; = :original_TRAVEL_DETAILS AND &quot;STATUS&quot; = :original_STATUS">
-            <DeleteParameters>
-                <asp:Parameter Name="original_DETAIL_ID" Type="Decimal" />
-                <asp:Parameter Name="original_PACKAGE_ID" Type="String" />
-                <asp:Parameter Name="original_DAY" Type="String" />
-                <asp:Parameter Name="original_TRAVEL_DETAILS" Type="String" />
-                <asp:Parameter Name="original_STATUS" Type="String" />
-            </DeleteParameters>
-            <InsertParameters>
-                <asp:Parameter Name="DETAIL_ID" Type="Decimal" />
-                <asp:Parameter Name="DAY" Type="String" />
-                <asp:Parameter Name="TRAVEL_DETAILS" Type="String" />
-                <asp:Parameter Name="STATUS" Type="String" />
-                <asp:Parameter Name="PACKAGE_ID" Type="String" />
-            </InsertParameters>
-            <UpdateParameters>
-                <asp:Parameter Name="DAY" Type="String" />
-                <asp:Parameter Name="TRAVEL_DETAILS" Type="String" />
-                <asp:Parameter Name="STATUS" Type="String" />
-                <asp:Parameter Name="original_DETAIL_ID" Type="Decimal" />
-                <asp:Parameter Name="original_PACKAGE_ID" Type="String" />
-                <asp:Parameter Name="original_DAY" Type="String" />
-                <asp:Parameter Name="original_TRAVEL_DETAILS" Type="String" />
-                <asp:Parameter Name="original_STATUS" Type="String" />
-            </UpdateParameters>
-        </asp:SqlDataSource>
-    </form>
 
     </div>
         </div>
@@ -168,4 +143,18 @@
     <script src="../../assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;PACKAGE_ID&quot;, &quot;PACKAGE_NAME&quot; FROM &quot;PACKAGE&quot;"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT c.customer_id, c.customer_name, c.customer_address, c.customer_phone, p.package_id, p.package_name, p.difficulty, p.start_date
+FROM customer c
+JOIN customer_link cl
+ON c.customer_id = cl.customer_id
+JOIN package p
+ON p.package_id = cl.package_id" FilterExpression="PACKAGE_NAME='{0}'">
+            <FilterParameters>
+                <asp:ControlParameter ControlID="DropDownList1" Name="PACKAGE_NAME" PropertyName="SelectedValue"/>
+            </FilterParameters>
+        </asp:SqlDataSource>
+    </form>
+
+    
 </html>
